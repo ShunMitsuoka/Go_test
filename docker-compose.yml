@@ -1,0 +1,15 @@
+version: "3"
+services: 
+  app:
+    container_name: go-test
+    build:
+      context: .
+      dockerfile: ./docker/go/Dockerfile
+    tty: true
+    volumes:
+      - ./app:/go/src
+    env_file:
+      - ./docker/go/.go_env
+    ports:
+      - 80:80
+      - 2345:2345
