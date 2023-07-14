@@ -20,7 +20,8 @@ func GetRouter() *gin.Engine {
 	})
 
 	m.HandleMessage(func(s *melody.Session, msg []byte) {
-		m.Broadcast(msg)
+		log.Printf("%#v\n", msg)
+		m.BroadcastOthers(msg, s)
 	})
 
 	m.HandleConnect(func(s *melody.Session) {
